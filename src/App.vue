@@ -1,6 +1,10 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal :header="header" :text="text" :theme="theme" />
+  <p>Welcome...</p>
+  <div v-if="showModal">
+    <Modal :header="header" :text="text" :theme="theme" @close="closeModal" />
+  </div>
+  <button @click="toggleModal">Show Modal</button>
 </template>
 
 <script>
@@ -18,10 +22,19 @@ export default {
       header: 'Sign up for the Giveaway!',
       text: 'Get a free course today!',
       theme: 'sale',
+      showModal: false,
     };
   },
 
-  methods: {},
+  methods: {
+    toggleModal() {
+      this.showModal = !this.showModal;
+    },
+
+    closeModal() {
+      this.showModal = false;
+    },
+  },
 };
 </script>
 
