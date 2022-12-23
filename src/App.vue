@@ -1,10 +1,6 @@
 <template>
   <h1>{{ title }}</h1>
-  <Modal />
-  <!-- <div>
-    <input type="text" ref="name" />
-    <button @click="handleClick">Click Me</button>
-  </div> -->
+  <Modal :header="header" :text="text" :theme="theme" />
 </template>
 
 <script>
@@ -19,21 +15,13 @@ export default {
 
   data() {
     return {
-      title: 'Simple Modal App',
+      header: 'Sign up for the Giveaway!',
+      text: 'Get a free course today!',
+      theme: 'sale',
     };
   },
 
-  methods: {
-    handleClick() {
-      console.log('name', this.$refs.name.value);
-
-      // add class
-      this.$refs.name.classList.add('active');
-
-      // focus
-      this.$refs.name.focus();
-    },
-  },
+  methods: {},
 };
 </script>
 
