@@ -1,5 +1,9 @@
 <template>
   <h1>{{ title }}</h1>
+  <div>
+    <input type="text" ref="name" />
+    <button @click="handleClick">Click Me</button>
+  </div>
 </template>
 
 <script>
@@ -12,6 +16,18 @@ export default {
     return {
       title: 'Simple Modal App',
     };
+  },
+
+  methods: {
+    handleClick() {
+      console.log('name', this.$refs.name.value);
+
+      // add class
+      this.$refs.name.classList.add('active');
+
+      // focus
+      this.$refs.name.focus();
+    },
   },
 };
 </script>
