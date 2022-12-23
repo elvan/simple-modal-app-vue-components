@@ -1,8 +1,17 @@
 <template>
   <div class="backdrop" @click.self="closeModal">
     <div class="modal" :class="{ sale: theme === 'sale' }">
-      <h1>{{ header }}</h1>
-      <p>{{ text }}</p>
+      <slot name="header">
+        <h1>Default Header</h1>
+      </slot>
+
+      <slot name="text">
+        <p>Default Text</p>
+      </slot>
+
+      <div class="actions">
+        <a href="#" @click="closeModal">Close</a>
+      </div>
     </div>
   </div>
 </template>
@@ -12,14 +21,6 @@ export default {
   name: 'Modal',
 
   props: {
-    header: {
-      type: String,
-      required: true,
-    },
-    text: {
-      type: String,
-      required: true,
-    },
     theme: {
       type: String,
       required: false,
@@ -61,6 +62,21 @@ export default {
 
 .modal p {
   font-style: normal;
+}
+
+.modal .actions {
+  text-align: center;
+  margin: 30px 0 10px 0;
+}
+
+.modal .actions a {
+  color: #333;
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  text-decoration: none;
+  margin: 10px;
+  background: white;
 }
 
 .modal.sale {
