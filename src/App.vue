@@ -1,19 +1,23 @@
 <template>
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
-  <div v-if="showModal">
-    <Modal :theme="theme" @close="closeModal">
-      <!-- Header -->
-      <template #header>
-        <h1>{{ header }}</h1>
-      </template>
 
-      <!-- Text -->
-      <template #text>
-        <p>{{ text }}</p>
-      </template>
-    </Modal>
+  <div v-if="showModal">
+    <teleport to="#modal">
+      <Modal :theme="theme" @close="closeModal">
+        <!-- Header -->
+        <template #header>
+          <h1>{{ header }}</h1>
+        </template>
+
+        <!-- Text -->
+        <template #text>
+          <p>{{ text }}</p>
+        </template>
+      </Modal>
+    </teleport>
   </div>
+
   <button @click="toggleModal">Show Modal</button>
 </template>
 
@@ -50,7 +54,8 @@ export default {
 </script>
 
 <style>
-#app {
+#app,
+#modal {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
