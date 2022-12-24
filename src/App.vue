@@ -29,6 +29,7 @@ export default {
 
   data() {
     return {
+      title: 'Simple Modal App',
       header: 'Sign up for the Giveaway!',
       text: 'Get a free course today!',
       theme: 'sale',
